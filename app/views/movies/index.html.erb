@@ -1,0 +1,24 @@
+<%# emmet only works for .html files in vs code rip %>
+
+<%# NOTE: that the webpage is called “index” 
+so it has access to all the variables etc 
+defined in the index action within the MoviesController class!  %>
+
+<%# ************************ SAMPLE CODE ************************ %>
+<%# <ul>
+  <li>Iron Man</li>
+  <li>Superman</li>
+  <li>Spider-Man</li>
+</ul> %>
+
+<%# ************************ ACTUAL CODE ************************ %>
+
+<ul>
+    <% @movies.each do |movie| %>
+     <li><%= movie %></li>            
+     <%# NOTE that li goes OUTSIDE % stuff! %>
+     <%# ALSO, leave spaces in between the % stuff and code. %>
+
+    <% end %>
+</ul>
+
