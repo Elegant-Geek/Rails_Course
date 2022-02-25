@@ -15,8 +15,11 @@ defined in the index action within the MoviesController class!  %>
 
 <ul>
     <% @movies.each do |movie| %>
-     <li><%= movie %></li>            
-     <%# NOTE that li goes OUTSIDE % stuff! %>
+     <li>
+        <strong><%= movie.title %></strong> (<%= movie.rating %>):
+        <%= number_to_currency(movie.total_gross, precision: 0) %>
+     </li>            
+     <%# NOTE that li, strong, parentheses etc. go OUTSIDE % stuff! %>
      <%# ALSO, leave spaces in between the % stuff and code. %>
 
     <% end %>
