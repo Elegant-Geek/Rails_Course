@@ -19,6 +19,10 @@ defined in the index action within the MoviesController class!  %>
         <strong><%= movie.title %></strong> (<%= movie.rating %>):
         <%= number_to_currency(movie.total_gross, precision: 0) %>
      </li>            
+
+     <p><%= movie.description %></p>
+    <p><%= movie.released_on %></p>
+
      <%# NOTE that li, strong, parentheses etc. go OUTSIDE % stuff! %>
      <%# ALSO, leave spaces in between the % stuff and code. %>
 
