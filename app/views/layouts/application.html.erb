@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eventz</title>
+    <title>Movies</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,13 @@
   </head>
 
   <body>
+  <header> <%= image_tag("logo") %> </header>
     <%= yield %>
+  <footer> 
+    <p>
+      Copyright &copy; 2005-<%= Time.now.year %>
+      <%= link_to 'The Pragmatic Studio','https://pragmaticstudio.com' %>
+    </p>
+  </footer>
   </body>
 </html>
