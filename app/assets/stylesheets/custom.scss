@@ -40,10 +40,15 @@ $secondary: $dark-gray;
   @extend .container;
 }
 
+section {
+  padding-left: 5rem;
+}
+
 // Header and Nav
 
 header {
   background-color: $primary;
+  display: flex;
   padding: 0.5rem;
   margin-bottom: 3rem;
 
