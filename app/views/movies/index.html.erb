@@ -17,7 +17,7 @@ defined in the index action within the MoviesController class!  %>
   <section class="movie">
     <div class="summary">
       <h2>
-        <%= movie.title %>
+        <%= link_to(movie.title, movie_path(movie)) %> 
       </h2>
       <h3>
         <%= total_gross(movie) %>
