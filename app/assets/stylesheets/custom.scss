@@ -40,9 +40,9 @@ $secondary: $dark-gray;
   @extend .container;
 }
 
-section, h1 {
-  padding-left: 5rem;
-}
+// h1 {
+//   padding-left: 5rem;
+// }
 
 // Header and Nav
 
@@ -163,6 +163,8 @@ section.movie-details {
 
   .image {
     @extend .col-md-3, .text-left;
+    margin-left: 5rem;
+    // I added this margin left line for movie show pages
 
     input[type="submit"] {
       margin-top: 1rem;
@@ -423,9 +425,17 @@ aside {
 
 // Forms
 
+h1.form-header {
+  margin-left: 5rem;
+  // I added that margin-left for forms! ^^
+}
+
 form:not([class="button_to"]) {
   max-width: 400px;
   margin-top: 1.5rem;
+  margin-left: 5rem;
+  // I added that margin-left for forms! ^^
+
 
   label {
     font-size: 1.1rem;
