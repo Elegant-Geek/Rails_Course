@@ -13,7 +13,13 @@
   <body>
 <%# for the header call the header partial %>
   <%= render "layouts/header" %>
+
+<%# NOTE: anything in the content class gets corectly "padded" due to "@extend .container;" in the .content CSS class. %>
+  <div class="content">
+    <%= render "layouts/flash" %>
     <%= yield %>
+  </div>
+
 <%# for the footer call the footer partial %>
   <%= render "layouts/footer" %>
   </body>
