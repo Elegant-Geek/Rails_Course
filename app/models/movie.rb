@@ -30,4 +30,15 @@ class Movie < ApplicationRecord
   def flop?
     total_gross.blank? || total_gross < 225_000_000
   end
+
+  def average_stars
+    reviews.average(:stars) || 0.0
+  end 
+  # (note the ^^ movie.reviews is just an atttribute/method you can call on the movie youre analyzing, like movie.title etc.)
+  def average_stars_as_percent
+    (self.average_stars / 5.0) * 100
+  end
+
 end
+
+

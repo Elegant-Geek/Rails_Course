@@ -14,4 +14,18 @@ module MoviesHelper
         movie.released_on.year
         # shortcut! ^^^
     end
+
+    # (optional helper that got commented out /replaced in both show.html.erb and index.html.erb)
+    # if using this helper on either the show and/or index page, comment out the render line that follows /replaces it!
+    
+    # def average_stars(movie)
+    #     if movie.average_stars.zero?
+    #       content_tag(:strong, "No reviews")
+    #     else
+    #         "*" * movie.average_stars.round
+    #     end
+    # end
+
 end
+
+
