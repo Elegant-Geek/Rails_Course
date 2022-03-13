@@ -1,0 +1,8 @@
+<h1>Edit Review for <%= link_to @movie.title, @movie %> </h1>
+<%= render "shared/errors", object: @review %>
+<%= render "reviews/reviewform", object: @review %>
+
+<section class = "admin">
+<%= link_to "Delete Review", [@movie, @review], class: "button-delete", method: :delete, 
+        data: { confirm: 'Delete Review?!' } %>
+</section>

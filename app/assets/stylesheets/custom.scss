@@ -11,6 +11,7 @@ $orange: #e8890c;
 $yellow: #ffc107;
 $light-yellow: #ffc;
 $red: #dc3545;
+$dark-red: #8B0000;
 $light-red: #ffcccb; 
 
 // Custom Variables
@@ -41,10 +42,6 @@ $secondary: $dark-gray;
 .content {
   @extend .container;
 }
-
-// h1 {
-//   padding-left: 5rem;
-// }
 
 // Header and Nav
 
@@ -393,6 +390,19 @@ section.admin {
     @extend .btn, .btn-secondary;
     letter-spacing: 1px;
     text-transform: uppercase;
+  }
+
+  a.button-delete {
+    @extend .btn, .btn-secondary;
+    letter-spacing: 1px;
+    border-color: $red;
+    background-color: $red;
+    text-transform: uppercase;
+  }
+
+  a.button-delete:hover {
+    background-color:$dark-red;
+    border-color: $dark-red;
   }
 }
 

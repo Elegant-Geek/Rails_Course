@@ -13,6 +13,9 @@
       <p>
         "<%= review.comment %>"
       </p>
+       <p class = "admin">
+          <%= link_to("Edit Review", edit_movie_review_path(@movie, review)) %>
+      </p>  
     </li>
   <% end %>
 </ul>
