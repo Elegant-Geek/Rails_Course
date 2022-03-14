@@ -1,4 +1,6 @@
 <%= form_with(model: [@movie, @review], local: true) do |f| %>
+<%= render "shared/errors", object: @review %>
+<%# NOTE: ^^ this is where I keep the shared/errors partial %>
   <%= f.label :name %>
   <%= f.text_field :name, autofocus: true %>
 <%# OLD STAR CODE (dropdown menu) %>

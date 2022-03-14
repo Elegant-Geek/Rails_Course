@@ -45,12 +45,13 @@ class ReviewsController < ApplicationController
         @review.destroy
         redirect_to (movie_reviews_path(@movie)), alert: "Review successfully deleted!"
     end
-end
 
-private
-def review_params
-  params.require(:review).permit(:name, :comment, :stars)
+    private
+    def review_params
+    params.require(:review).permit(:name, :comment, :stars)
+    end
+    def set_movie
+        @movie = Movie.find(params[:movie_id])
+    end
 end
-def set_movie
-    @movie = Movie.find(params[:movie_id])
-end
+ # ^^^^ Reminder to put private methods in the class not outside of it!

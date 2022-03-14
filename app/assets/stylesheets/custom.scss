@@ -161,7 +161,7 @@ section.movie-details {
   @extend .row;
 
   .image {
-    @extend .col-md-3, .text-left;
+    @extend .col-md-3, .text-center;
 
     input[type="submit"] {
       margin-top: 1rem;

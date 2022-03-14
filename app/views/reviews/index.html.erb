@@ -19,3 +19,15 @@
     </li>
   <% end %>
 </ul>
+
+<%# ADDING ANOTHER "WRITE REVIEW" BUTTON (my own code)%>
+<div class="content">
+  <section class="movie-details">
+    <%= link_to "Write Review", new_movie_review_path(@movie),
+      class: "review" %>
+  </section>
+</div>
+
+
+
+

@@ -43,10 +43,12 @@ class MoviesController < ApplicationController
         redirect_to movies_url, alert: "Movie successfully deleted!"
     end
 
-end
-
-private
+    private
     def movie_params
         params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross,
                                 :director, :duration, :image_file_name)
     end
+end
+ # ^^^^ Reminder to put private methods in the class not outside of it!
+
+
