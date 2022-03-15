@@ -6,11 +6,19 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
 
+    <%= f.label :username, "Username (optional)" %>
+    <%= f.text_field :username, placeholder: "Alphanumeric characters only!" %>
+
     <%= f.label :password %>
     <%= f.password_field :password %>
 
     <%= f.label :password_confirmation, "Confirm Password" %>
     <%= f.password_field :password_confirmation %>
 
-    <%= f.submit %>
+    <%#= f.submit %>
+    <% if user.new_record? %>
+    <%= f.submit "Create Account" %>
+    <% else %>
+    <%= f.submit "Update Account" %>
+    <% end %>
 <% end %>

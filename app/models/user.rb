@@ -7,6 +7,11 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 10, allow_blank: true } 
   # allow_blank :true means that a user is allowed to 
   # update other attributes without updating password.
+  validates :username, 
+  allow_blank: true,
+  format: { with: /\A[A-Z0-9]+\z/i },
+  uniqueness: { case_sensitive: false },
+  length: { minimum: 5 }
 
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
