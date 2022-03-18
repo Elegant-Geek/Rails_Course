@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
         if @movie.update(movie_params)
             # flash[:notice] = "Movie successfully updated!"
             # redirect_to(movie_path(@movie))
-            redirect_to (movie_path(@movie)), notice: "Movie successfully updated!"
+            redirect_to @movie, notice: "Movie successfully updated!"
         else
             render :edit
         end 
@@ -31,7 +31,7 @@ class MoviesController < ApplicationController
     def create
         @movie = Movie.new(movie_params)
         if @movie.save
-            redirect_to (movie_path(@movie)), notice: "Movie successfully created!"
+            redirect_to @movie, notice: "Movie successfully created!"
         else 
             render :new
         end 

@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:username_or_email]) 
     if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect_to user, notice: "Welcome back, #{user.name}!"
+        redirect_to (session[:intended_url] || user),
+        notice: "Welcome back, #{user.name}!"
+            session[:intended_url] = nil
     else
         flash.now[:alert] = "Invalid email/password combination!"
         render :new
@@ -16,7 +18,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        
+        session[:user_id] = nil
+        redirect_to movies_url, notice: "You are now logged out!"
     end
 
 end

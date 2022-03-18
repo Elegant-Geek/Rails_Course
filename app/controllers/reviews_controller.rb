@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
         if @review.update(review_params)
             # flash[:notice] = "Movie successfully updated!"
             # redirect_to(movie_path(@movie))
-            redirect_to (movie_reviews_path(@movie)), notice: "Review successfully updated!"
+            redirect_to (movie_reviews_url(@movie)), notice: "Review successfully updated!"
         else
             render :edit
         end 
@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
     def destroy
         @review = Review.find(params[:id])
         @review.destroy
-        redirect_to (movie_reviews_path(@movie)), alert: "Review successfully deleted!"
+        redirect_to (movie_reviews_url(@movie)), alert: "Review successfully deleted!"
     end
 
     private
