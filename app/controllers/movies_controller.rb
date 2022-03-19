@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+    before_action :require_login, except: [:index, :show]
+    before_action :require_admin, except: [:index, :show]
 
     def index #action name goes here, index in this case. (which is tied to the name.html.erb view template file)
         # @movies = ["Iron Man", "Superman", "Spider-Man", "Avengers"]
@@ -48,6 +50,7 @@ class MoviesController < ApplicationController
         params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross,
                                 :director, :duration, :image_file_name)
     end
+
 end
  # ^^^^ Reminder to put private methods in the class not outside of it!
 
