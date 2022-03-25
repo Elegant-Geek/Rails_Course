@@ -201,8 +201,9 @@ section.movie-details {
       padding-right: 1rem;
     }
   }
-
+  // added justify-content: center; to center the "fave" button!
   .faves {
+    justify-content: center; 
     @extend .input-group;
     margin-top: 1rem;
 
@@ -214,6 +215,7 @@ section.movie-details {
       @extend .input-group-append, .input-group-text;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      color: $primary;
     }
 
     input[type="submit"] {

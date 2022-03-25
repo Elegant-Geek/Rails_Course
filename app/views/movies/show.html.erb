@@ -2,6 +2,14 @@
 <section class="movie-details">
   <div class="image">
     <%= image_tag(@movie.image_file_name) %>
+    <% if current_user %>
+    <div class="faves"> 
+    <%= fave_or_unfave_button(@movie, @favorite) %>
+      <div class="count"> 
+        <%= @fans.size %> 
+      </div>
+    </div>
+    <% end %>
   </div>
   
   <div class="details">
@@ -38,11 +46,24 @@
     class: "review" %>
   </div>
 </section>
-
+<aside>
+<% if @fans.present? %>
+    <h4>Fans</h4>
+    <ul>
+      <% @fans.each do |user| %>
+        <li>
+          <%= profile_image(user, 25) %>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</aside>
 <% if current_user_admin? %>
 <section class = "admin">
   <%= link_to("Edit Movie", edit_movie_path(@movie), class: "button") %>
   <%= link_to "Delete Movie", movie_path(@movie), class: "button-delete", method: :delete,
     data: { confirm: 'Delete Movie?!' }  %>
 </section>
+
 <% end %>
