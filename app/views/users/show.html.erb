@@ -17,5 +17,27 @@
         class: "button delete" %>
     <% end %>
   </div>
+
+  <% if @reviews.present? %>
+    <h3><%= pluralize(@user.reviews.size, "review") %> by <%= @user.name %>:</h3>
+    <% @reviews.each do |review| %>
+      <div class="review">
+        <div class="details">
+          <span class="title">
+            <%= link_to review.movie.title, review.movie %>
+          </span>
+          <%= render "shared/stars", percent: review.stars_as_percent %>
+          <span class="date">
+          <%= profile_image(review.user, 25) %>
+            <%= time_ago_in_words(review.created_at) %> ago
+          </span>
+          <p>
+            <%= review.comment %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
 </section>
 

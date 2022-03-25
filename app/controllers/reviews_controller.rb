@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
 
-
+    before_action :require_login
     before_action :set_movie
+  
     # "set movie" private method is done before all of these actions
     # code duplication is eliminated this way.
     # before adding the "before_action" at the top here,
@@ -18,6 +19,7 @@ class ReviewsController < ApplicationController
 
     def create
         @review = @movie.reviews.new(review_params)
+        @review.user = current_user
         if @review.save
             redirect_to movie_reviews_url(@movie), notice: "Thanks for your review!"
         else 
@@ -48,7 +50,7 @@ class ReviewsController < ApplicationController
 
     private
     def review_params
-    params.require(:review).permit(:name, :comment, :stars)
+    params.require(:review).permit(:comment, :stars)
     end
     def set_movie
         @movie = Movie.find(params[:movie_id])
