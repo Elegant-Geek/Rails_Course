@@ -59,6 +59,16 @@
     </ul>
   <% end %>
 </aside>
+<aside>
+  <% if @genres.present? %>
+  <h4>Genres</h4>
+  <ul>
+    <% @genres.each do |g| %>
+      <li><%= g.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+</aside>
 <% if current_user_admin? %>
 <section class = "admin">
   <%= link_to("Edit Movie", edit_movie_path(@movie), class: "button") %>
