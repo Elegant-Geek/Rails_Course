@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  get "movies/filter/:filter" => "movies#index", as: :filtered_movies
+
   resources :genres
   resources :users
   root "movies#index"

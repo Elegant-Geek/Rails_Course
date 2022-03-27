@@ -14,6 +14,14 @@ module MoviesHelper
         movie.released_on.year
         # shortcut! ^^^
     end
+#highlight the active nav link the user is on!
+    def nav_link_to(text, url)
+        if current_page?(url) #current_page? is a built in helper method
+          link_to(text, url, class: "active")
+        else
+          link_to(text, url)
+        end
+      end
 
     # (optional helper that got commented out /replaced in both show.html.erb and index.html.erb)
     # if using this helper on either the show and/or index page, comment out the render line that follows /replaces it!

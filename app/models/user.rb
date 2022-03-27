@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates :email, format: { with: /\S+@\S+/ },
   uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 10, allow_blank: true } 
+
+  
+  scope :by_name, -> { order(name: :asc) }
+  scope :not_admins, -> { by_name.where(admin: false) }
   # allow_blank :true means that a user is allowed to 
   # update other attributes without updating password.
   validates :username, 
@@ -19,5 +23,6 @@ class User < ApplicationRecord
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end
+
 end
 

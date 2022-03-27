@@ -15,21 +15,13 @@ class Movie < ApplicationRecord
   RATINGS = %w(G PG PG-13 R NC-17)
   validates :rating, inclusion: { in: RATINGS }
 
-  def self.released
-    where("released_on < ?", Time.now).order("released_on desc")
-  end
-
-  def self.hits
-    where("total_gross >= 300000000").order(total_gross: :desc)
-  end
-  
-  def self.flops
-    where("total_gross < 22500000").order(total_gross: :asc)
-  end
-  
-  def self.recently_added
-    order("created_at desc").limit(3)
-  end
+  #concise way of defining custom queries using scope and lamda / ->
+  scope :released, -> { where("released_on < ?", Time.now).order(released_on: :desc) }
+  scope :upcoming, -> { where("released_on > ?", Time.now).order(released_on: :asc) }
+  scope :hits, -> { released.where("total_gross >= 300000000").order(total_gross: :desc) }
+  scope :flops, -> { released.where("total_gross < 22500000").order(total_gross: :asc) }
+  scope :recently_added, -> { order("created_at desc").limit(3) }
+  scope :recent, ->(max=3) { released.limit(max) }
 
   def flop?
     total_gross.blank? || total_gross < 225_000_000
