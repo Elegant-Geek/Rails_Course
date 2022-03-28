@@ -2,6 +2,8 @@ class MoviesController < ApplicationController
 
     before_action :require_login, except: [:index, :show]
     before_action :require_admin, except: [:index, :show]
+    before_action :set_movie, only: [:show, :edit, :update, :destroy]
+
 
     def index #action name goes here, index in this case. (which is tied to the name.html.erb view template file)
         # @movies = ["Iron Man", "Superman", "Spider-Man", "Avengers"]
@@ -22,7 +24,6 @@ class MoviesController < ApplicationController
     end
 
     def show
-        @movie = Movie.find(params[:id])
         @genres = @movie.genres.order(:name)
         @fans = @movie.fans
         if current_user
@@ -31,11 +32,10 @@ class MoviesController < ApplicationController
     end
 
     def edit
-        @movie = Movie.find(params[:id])
+        # @movie = Movie.find(params[:id])
     end
 
     def update
-        @movie = Movie.find(params[:id])
         if @movie.update(movie_params)
             # flash[:notice] = "Movie successfully updated!"
             # redirect_to(movie_path(@movie))
@@ -59,7 +59,6 @@ class MoviesController < ApplicationController
     end
 
     def destroy
-        @movie = Movie.find(params[:id])
         @movie.destroy
         redirect_to movies_url, alert: "Movie successfully deleted!"
     end
@@ -69,6 +68,12 @@ class MoviesController < ApplicationController
         params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross,
                                 :director, :duration, :image_file_name, genre_ids: [])
     end
+
+    def set_movie
+        @movie = Movie.find_by!(slug: params[:id])
+      end
+      #^^ set this to run before only the [:show, :edit, :update, :destroy] actions
+
 
 end
  # ^^^^ Reminder to put private methods in the class not outside of it!
