@@ -7,7 +7,6 @@ class MoviesController < ApplicationController
 
     def index #action name goes here, index in this case. (which is tied to the name.html.erb view template file)
         # @movies = ["Iron Man", "Superman", "Spider-Man", "Avengers"]
-        def index
             case params[:filter]
             when "upcoming"
               @movies = Movie.upcoming
@@ -20,7 +19,6 @@ class MoviesController < ApplicationController
             else
               @movies = Movie.released
             end
-          end
     end
 
     def show

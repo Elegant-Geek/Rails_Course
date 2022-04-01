@@ -6,7 +6,8 @@ class Movie < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :fans, through: :favorites, source: :user #only need the "source" bit if (fans for instance) is something created in controller/is not standalone table/model
   has_many :critics, through: :reviews, source: :user #user.critics directs to all reviewers for that movie
-  validates :released_on, :duration, presence: true
+  validates :released_on, presence: true
+  # validates :duration, presence: true
   validates :title, presence: true, uniqueness: true
   validates :description, length: { minimum: 25 }
   validates :total_gross, numericality: { greater_than_or_equal_to: 0 }
