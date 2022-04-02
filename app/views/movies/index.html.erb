@@ -12,11 +12,15 @@ defined in the index action within the MoviesController class!  %>
 </ul> %>
 
 <%# ************************ ACTUAL CODE ************************ %>
-
 <% @movies.each do |movie| %>
   <section class="movie">
   <div class="image">
-    <%= image_tag(movie.image_file_name) %>
+    <%# adding my own neat conditional statement re: the image on the homepage %>
+      <% if current_user_admin? %>
+          <%= link_to main_image(movie), edit_movie_url(movie)	%>
+    <% else %>
+          <%= link_to main_image(movie), movie %>
+    <% end %>
   </div>
     <div class="summary">
       <h2>
