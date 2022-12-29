@@ -18,5 +18,8 @@ module Flix
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # #fix forbidden class error in heroku yaml
+    # config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time]
+  config.active_record.use_yaml_unsafe_load = true
   end
 end
