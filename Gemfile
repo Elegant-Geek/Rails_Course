@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.1'
+ruby '3.0.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
@@ -63,3 +63,11 @@ end
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'tzinfo-data', '1.2014.5'
+
+gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "net-smtp", "~> 0.3.3", :require => false
+
+gem "net-imap", "~> 0.3.4", :require => false
+
+gem "net-pop", "~> 0.1.2", :require => false

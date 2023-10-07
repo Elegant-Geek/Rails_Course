@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :genres
   resources :users
   root "movies#index"
+  # root "rails/welcome#index"
   resources :movies do
     resources :reviews
     resources :favorites, only: [:create, :destroy]
